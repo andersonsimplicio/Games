@@ -1,11 +1,10 @@
 import pygame
 import os,sys,time,random
-from random import randint,uniform
 
 
 
 '''
-Criando os Meteoros Aula 06.02
+Criando os Meteoros Aula 06.01
 
 '''
 width, height = 1200, 650
@@ -16,14 +15,11 @@ def laser_update(laser_list,speed=300):
         if rec.bottom < 0:
             laser_list.remove(rec)
 
-def meteoro_update(meteoro_list,speed=500):
-    for rec_tupla in meteoro_list:
-        rec=rec_tupla[0]
-        direcao = rec_tupla[1]
-        
-        rec.center += direcao*speed * dt
+def meteoro_update(meteoro_list,speed=300):
+    for rec in meteoro_list:
+        rec.y+=round(speed * dt)
         if rec.top > height:
-            meteoro_list.remove(rec_tupla)
+            meteoro_list.remove(rec)
 
 
 def displayScore(display,font): 
@@ -88,13 +84,10 @@ while loop:
             tempo_disparo = pygame.time.get_ticks()
         
         if event.type == meteoro_tempo:
-            x_pos = randint(-110, width+110)
-            y_pos = randint(-100, -50)
-            metoro_rec = meteor_img.get_rect(center=(x_pos,y_pos))
-            # Criando uma direção para os metoros    
-            direcao = pygame.math.Vector2(uniform(-0.5,0.5),1)
-            print(direcao)
-            metoros_list.append((metoro_rec,direcao))
+            x_pos = random.randrange(10, width-10,5)
+            y_pos = random.randint(-100, -50)
+            metoro_rec = meteor_img.get_rect(midbottom=(x_pos,y_pos))
+            metoros_list.append(metoro_rec)
 
     #Limitando os frames  (FPS)
     relogio.tick(60)
@@ -123,7 +116,7 @@ while loop:
     meteoro_update(meteoro_list=metoros_list)
 
     for rec in metoros_list:
-        display.blit(meteor_img,rec[0]) 
+        display.blit(meteor_img,rec) 
 
     pygame.display.update()
     
