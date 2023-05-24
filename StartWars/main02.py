@@ -1,5 +1,12 @@
 import pygame
 import os,sys,time
+
+
+'''
+Criando a movimentação do jogo com Mouse
+
+'''
+
 pygame.init()
 width, height = 1200, 650
 display = pygame.display.set_mode((width, height))

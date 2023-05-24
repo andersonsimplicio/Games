@@ -1,20 +1,21 @@
 import pygame
 import os,sys,time
+
+'''
+Criando os Retangulos do Jogo
+
+'''
 pygame.init()
 width, height = 1200, 650
 display = pygame.display.set_mode((width, height))
 pygame.display.set_caption("N A S A")
 
-#Carregando as imagens
 nave = pygame.image.load(os.path.join("assets","img","ship.png")).convert_alpha()
 nave = pygame.transform.scale(nave,(40,40))
-lasersurf = pygame.image.load(os.path.join("assets","img","laser.png")).convert_alpha()
-lasersurf =pygame.transform.scale(lasersurf,(4,40))
-#Capturando o Retangulo 
+#Aula 10 de maio
 navRec = nave.get_rect(center=(500,500))
-laserRec = lasersurf.get_rect(midbottom=navRec.midtop)
 print(navRec)
-print(laserRec)
+
 
 bg1 = pygame.image.load(os.path.join("assets","img","espaco.png")).convert()
 
@@ -23,7 +24,7 @@ bgR1 = bg1.get_rect(center=((width/2,(height/2))))
 
 
 font = pygame.font.Font(os.path.join("assets","Font","Sigmar","Sigmar-Regular.ttf"),16)
-texto = font.render('S T A R - GAME', True,(255,255,225))
+texto = font.render('S T A R - GAME', True,(65,105,225))
 recText = texto.get_rect(center=(100,10))
 loop = True
 relogio = pygame.time.Clock()
@@ -32,13 +33,11 @@ while loop:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             loop = False
-      
 
+       
     #Limitando os frames  (FPS)
-    dt = relogio.tick(120)/1000
-    # entrada do mouse
-    
-    navRec.center = pygame.mouse.get_pos()
+    relogio.tick(30)
+
     # Atualizando os Quadros
 
     display.fill('black')
@@ -46,10 +45,9 @@ while loop:
 
     #utilizando o retangulo para poscionar a nave
     display.blit(nave, navRec)
-    #Desenhado o laser da nave
-    laserRec.y-=10 * dt # type: ignore
-    display.blit(lasersurf, laserRec)    
-   
+    if navRec.y >=10:
+        navRec.y-=0.05 # type: ignore
+
     #display.blit(texto, (10,10))
     display.blit(texto, recText)
     
