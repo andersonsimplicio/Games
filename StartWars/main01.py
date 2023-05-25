@@ -8,7 +8,7 @@ Criando os Retangulos do Jogo
 pygame.init()
 width, height = 1200, 650
 display = pygame.display.set_mode((width, height))
-pygame.display.set_caption("N A S A")
+pygame.display.set_caption("Start Games")
 
 nave = pygame.image.load(os.path.join("assets","img","ship.png")).convert_alpha()
 nave = pygame.transform.scale(nave,(40,40))
