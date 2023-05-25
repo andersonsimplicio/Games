@@ -13,7 +13,7 @@ width, height = 1200, 650
 def laser_timer(pode_disparar,duracao=300):
     if not pode_disparar:
         tempo_corrente = pygame.time.get_ticks()
-        if tempo_corrente - tempo_disparo > duracao:
+        if tempo_corrente - tempo_disparo > duracao: 
             return True
     return False
 
@@ -66,7 +66,7 @@ bgR1 = bg1.get_rect(center=((width/2,(height/2))))
 font = pygame.font.Font(os.path.join("assets","Font","Sigmar","Sigmar-Regular.ttf"),16)
 
 pode_disparar = True #verifica se o jogador pode realizar outro dispato
-tempo_disparo=None
+tempo_disparo=pygame.time.get_ticks()
 
 
 # Criando os meteoros
@@ -81,8 +81,8 @@ while loop:
         if event.type == pygame.QUIT:
             loop = False
       
-        if event.type == pygame.MOUSEBUTTONDOWN and pode_disparar:
-            print('Disparo')
+        if event.type == pygame.MOUSEBUTTONDOWN:
+            #print('Disparo')
             laser_rec = lasersurf.get_rect(midbottom=navRec.midtop)
             laser_list.append(laser_rec)
             
