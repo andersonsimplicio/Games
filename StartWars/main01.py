@@ -44,10 +44,10 @@ while loop:
     display.blit(bg1, bgR1)    
 
     #utilizando o retangulo para poscionar a nave
-    display.blit(nave, navRec)
+    
     if navRec.y >=10:
-        navRec.y-=0.05 # type: ignore
-
+        navRec.y-=1 # type: ignore
+    display.blit(nave, navRec)
     #display.blit(texto, (10,10))
     display.blit(texto, recText)
     

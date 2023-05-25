@@ -35,16 +35,18 @@ while loop:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             loop = False
-        # if event.type == pygame.MOUSEMOTION:
-        #     #print(event.pos)
-        #     navRec.center = event.pos
-        # if event.type == pygame.MOUSEBUTTONUP:
+        '''
+        if event.type == pygame.MOUSEMOTION:
+             print(event.pos)
+             navRec.center = event.pos
+        '''
+        #if event.type == pygame.MOUSEBUTTONUP:
         #     print(f"Tiro {event.pos}")
 
     #Limitando os frames  (FPS)
-    relogio.tick(30)
+    relogio.tick(120)
     # entrada do mouse
-    #print(pygame.mouse.get_pressed())
+    print(pygame.mouse.get_pressed())
     #print(pygame.mouse.get_pos())
     navRec.center = pygame.mouse.get_pos()
     # Atualizando os Quadros
