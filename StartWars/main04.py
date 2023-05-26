@@ -4,7 +4,6 @@ import os,sys,time
 
 '''
 Criando os Disparos com laser e a lista de lasers
-
 '''
 
 def laser_update(laser_list,speed=300):
