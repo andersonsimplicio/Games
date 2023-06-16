@@ -3,7 +3,6 @@ import os,sys,time,random
 from random import randint,uniform
 
 
-
 '''
 Criando os Meteoros Aula 07 Colisão simples
 '''
@@ -38,10 +37,7 @@ def displayScore(display,font):
     texto = font.render(score_text, True,(255,255,225))
     recText = texto.get_rect(midleft=(30,15))
     display.blit(texto, recText)
-
-
-
-
+ 
 pygame.init()
 width, height = 1200, 650
 display = pygame.display.set_mode((width, height))
@@ -76,7 +72,6 @@ metoros_list = []
 laser_list = []
 #Capturando o Retangulo 
 navRec = nave.get_rect(center=(500,500))
-
 campoRec = campo.get_rect(center=navRec.center)
 
 bg1 = pygame.image.load(os.path.join("assets","img","espaco.png")).convert()
@@ -93,10 +88,17 @@ meteoro_tempo = pygame.event.custom_type()
 pygame.time.set_timer(meteoro_tempo, 500) # 0,5 segundos 
 
 #Criando som
-laser_som = pygame.mixer.Sound(os.path.join("assets","sound","laser.ogg"))
-explosao_som = pygame.mixer.Sound(os.path.join("assets","sound","explosao.wav"))
-musica = pygame.mixer.Sound(os.path.join("assets","sound","ledzepelin.mp3"))
-musica.play(loops=-1)
+try:
+    laser_som = pygame.mixer.Sound(os.path.join("assets","sound","laser.ogg"))
+    explosao_som = pygame.mixer.Sound(os.path.join("assets","sound","explosao.wav"))
+    musica = pygame.mixer.Sound(os.path.join("assets","sound","ledzepelin.mp3"))
+    musica.play(loops=-1)
+except:
+    print("Modulo de Som nao carregado")
+    laser_som=None
+    explosao_som=None
+    musica=None
+
 loop = True
 relogio = pygame.time.Clock()
 campo_ativo = True
@@ -116,7 +118,9 @@ while loop:
             pode_disparar = False
             tempo_disparo = pygame.time.get_ticks()
             #Executa som do laser
-            laser_som.play()
+            if laser_som is not None:
+                laser_som.play()
+
            
         if event.type == meteoro_tempo:
             x_pos = randint(-110, width+110)
@@ -146,7 +150,7 @@ while loop:
 
     image = image_sprite[list_campo]
     campoRec = image.get_rect(center=navRec.center)
-    print(image.get_rect(center=navRec.center))
+    
     display.blit(image,campoRec)
     
     list_campo+=1
@@ -172,7 +176,8 @@ while loop:
                     campo.set_alpha(life_campo)
 
                 metoros_list.remove(meteoro_tupla)
-                explosao_som.play()
+                if explosao_som is not None:
+                    explosao_som.play()
                 if life_campo <= 0:
                     campo_ativo =False
 
@@ -181,7 +186,8 @@ while loop:
             if laser_ret.colliderect(meteoro_tupla[0]):
                 metoros_list.remove(meteoro_tupla)
                 laser_list.remove(laser_ret)
-                explosao_som.play()
+                if explosao_som is not None:
+                    explosao_som.play()
 
 
     for rec in laser_list:
