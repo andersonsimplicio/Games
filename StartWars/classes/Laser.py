@@ -7,3 +7,5 @@ class Laser(pygame.sprite.Sprite):
         self.__image =pygame.transform.scale(self.__image,(4,40))
         self.image = self.__image
         self.rect = self.image.get_rect(midbottom=pos)
+    
+    def update(self):
