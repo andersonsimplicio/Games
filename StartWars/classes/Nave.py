@@ -1,5 +1,5 @@
 import pygame,os
-
+from .Laser import Laser
 class Nave(pygame.sprite.Sprite):
     def __init__(self,groups) -> None:
         super().__init__(groups)
@@ -23,14 +23,15 @@ class Nave(pygame.sprite.Sprite):
                 if t_atual - self.__time_tiro >= 500:
                         self.__pode_disparar=True
 
-    def disparo_laser(self):
+    def disparo_laser(self,dt,laser_group):
         if pygame.mouse.get_pressed()[0] and self.__pode_disparar:
             self.__pode_disparar = False
             self.__time_tiro = pygame.time.get_ticks()
-
-    def update(self):
+            Laser(self.rect.midtop,dt,laser_group)
+            
+    def update(self,dt,laser_group):
         self.laser_time()
-        self.disparo_laser()
+        self.disparo_laser(dt,laser_group)
         self.input_position()
        
 
