@@ -13,6 +13,14 @@ class Laser(pygame.sprite.Sprite):
         self.__direcao = pygame.math.Vector2(0,-1)
         self.__speed = 600
 
-    def update(self): 
+
+    def meteoro_colisor(self,meteor_group):
+        if pygame.sprite.spritecollide(self,meteor_group,True):
+            self.kill()
+
+    def update(self,meteoro_group): 
         self.__pos += (self.__direcao * self.__speed)*self.__dt # type: ignore   
         self.rect.topleft = (round(self.__pos.x),round(self.__pos.y)) # type: ignore
+        self.meteoro_colisor(meteoro_group)
+        if self.rect.top < 0:
+            self.kill()

@@ -1,7 +1,7 @@
 import pygame, sys,os
 from random import randint,uniform
-from classes import Nave,Meteoro
-
+from classes import Nave,Meteoro,Score
+pygame.init()
 #Configuração basica
 width,height = 1200,720
 display_surface = pygame.display.set_mode((width,height))   
@@ -21,7 +21,10 @@ bg1 = pygame.image.load(os.path.join("assets","img","espaco.png")).convert()
 # meteor
 meteoro_timer = pygame.event.custom_type()
 pygame.time.set_timer(meteoro_timer,400) 
+# Carrehando a fonte
+font = pygame.font.Font(os.path.join("assets","Font","Sigmar","Sigmar-Regular.ttf"),16)
 
+score = Score(font)
 
 while True:
     #Tratando Evento de loop
@@ -38,11 +41,14 @@ while True:
     dt = FPS.tick(60) / 1000.0
     #incluido imagem de Fundo
     display_surface.blit(bg1,(0,0))
-    group_sprite.update(dt,laser_group)
-    group_sprite.draw(display_surface)
-    laser_group.update()
+    group_sprite.update(dt,laser_group,meteoro_group)
+    
+    laser_group.update(meteoro_group)
     laser_group.draw(display_surface)
+    group_sprite.draw(display_surface)
     meteoro_group.update()
     meteoro_group.draw(display_surface)
+
+    score.display(display_surface)
 
     pygame.display.update()

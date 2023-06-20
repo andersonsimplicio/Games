@@ -1,4 +1,4 @@
-import pygame,os
+import pygame,os,sys
 from .Laser import Laser
 class Nave(pygame.sprite.Sprite):
     def __init__(self,groups) -> None:
@@ -28,10 +28,16 @@ class Nave(pygame.sprite.Sprite):
             self.__pode_disparar = False
             self.__time_tiro = pygame.time.get_ticks()
             Laser(self.rect.midtop,dt,laser_group)
-            
-    def update(self,dt,laser_group):
+    
+    def meteoro_colisor(self,meteor_group):
+        if pygame.sprite.spritecollide(self,meteor_group,True):
+            pygame.quit()
+            sys.exit()
+
+    def update(self,dt,laser_group,meteoro_group):
         self.laser_time()
         self.disparo_laser(dt,laser_group)
         self.input_position()
+        self.meteoro_colisor(meteoro_group)
        
 
