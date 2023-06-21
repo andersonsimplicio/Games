@@ -16,13 +16,15 @@ class Meteoro(pygame.sprite.Sprite):
         self.dt = dt
         self.rotacao = 0
         self.velocidade_ratacao = randint(10,60)    
+        # Implementando mascara
+        self.mascara = pygame.mask.from_surface(self.image)
     
     def get_rotacao(self):
         self.rotacao+=self.velocidade_ratacao*self.dt
         rot_suface = pygame.transform.rotozoom(self.__meteor_img,self.rotacao,1)
         self.image = rot_suface
         self.rect = self.image.get_rect(center=self.rect.center)
-          
+        self.mascara = pygame.mask.from_surface(self.image)  
     def update(self):
         self.pos += (self.direcao * self.speed)*self.dt # type: ignore   
         self.rect.topleft = (round(self.pos.x),round(self.pos.y)) # type: ignore

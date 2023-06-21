@@ -11,6 +11,10 @@ class Nave(pygame.sprite.Sprite):
         # Criando um timer para o disparo
         self.__pode_disparar = True
         self.__time_tiro = None
+        # Implementado mascara
+        self.mascara = pygame.mask.from_surface(self.image)
+        #sound
+        self.som_lase = pygame.mixer.Sound(os.path.join("assets","sound","laser.ogg"))
     
     def input_position(self):
         pos = pygame.mouse.get_pos()
@@ -28,9 +32,10 @@ class Nave(pygame.sprite.Sprite):
             self.__pode_disparar = False
             self.__time_tiro = pygame.time.get_ticks()
             Laser(self.rect.midtop,dt,laser_group)
+            self.som_lase.play()
     
     def meteoro_colisor(self,meteor_group):
-        if pygame.sprite.spritecollide(self,meteor_group,True):
+        if pygame.sprite.spritecollide(self,meteor_group,False,pygame.sprite.collide_mask): # type: ignore
             pygame.quit()
             sys.exit()
 

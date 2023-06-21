@@ -25,7 +25,9 @@ pygame.time.set_timer(meteoro_timer,400)
 font = pygame.font.Font(os.path.join("assets","Font","Sigmar","Sigmar-Regular.ttf"),16)
 
 score = Score(font)
-
+bg_musci = pygame.mixer.Sound(os.path.join("assets","sound","music.wav"))
+bg_musci.play(loops=-1)
+bg_musci.set_volume(0.2)
 while True:
     #Tratando Evento de loop
     for event in pygame.event.get():
