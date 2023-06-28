@@ -7,7 +7,7 @@ StartWars/classes/__pycache__
 tinyswords/.godot/
 
 # Godot-specific ignores
-tinyswords/.import/*
+tinyswords/.import/
 tinyswords/export.cfg
 tinyswords/export_presets.cfg
 
