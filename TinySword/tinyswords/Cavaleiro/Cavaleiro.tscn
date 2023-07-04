@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://assets/factions/knight/warrior.png" type="Texture" id=1]
 [ext_resource path="res://tinyswords/Cavaleiro/Cavaleiro.gd" type="Script" id=2]
@@ -295,8 +295,39 @@ tracks/3/keys = {
 [sub_resource type="RectangleShape2D" id=6]
 extents = Vector2( 31, 56 )
 
+[sub_resource type="Animation" id=8]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Textura:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 0.941176, 0.937255, 0.937255, 1 ) ]
+}
+
+[sub_resource type="Animation" id=9]
+resource_name = "hit"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("Textura:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0.968627, 0.0431373, 0.168627, 1 ), Color( 0.972549, 0.980392, 0.980392, 1 ) ]
+}
+
 [node name="Cavaleiro" type="KinematicBody2D"]
-collision_layer = 3
+collision_mask = 2
 script = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -304,6 +335,7 @@ position = Vector2( 0.5, 33 )
 shape = SubResource( 1 )
 
 [node name="Textura" type="Sprite" parent="."]
+modulate = Color( 0.941176, 0.937255, 0.937255, 1 )
 texture = ExtResource( 1 )
 hframes = 6
 vframes = 3
@@ -323,6 +355,10 @@ collision_mask = 2
 position = Vector2( 56, -15 )
 shape = SubResource( 6 )
 disabled = true
+
+[node name="AnimationAux" type="AnimationPlayer" parent="."]
+anims/RESET = SubResource( 8 )
+anims/hit = SubResource( 9 )
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
 [connection signal="body_entered" from="AreaAtaque" to="." method="_on_AreaAtaque_body"]
