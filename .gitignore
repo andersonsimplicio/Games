@@ -1,10 +1,6 @@
 StartWars/.vscode
 StartWars/.vscode/settings.json
 StartWars/classes/__pycache__
-<<<<<<< HEAD
-.godot/
-=======
-
 
 # Godot 4+ specific ignores
 tinyswords/.godot/
@@ -21,4 +17,3 @@ tinyswords/*.translation
 tinyswords/.mono/
 tinyswords/data_*/
 tinyswords/mono_crash.*.json
->>>>>>> c156b2d7c4e07f89292033c3a26748c4630702d2
