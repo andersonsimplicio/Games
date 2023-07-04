@@ -1,4 +1,24 @@
 StartWars/.vscode
 StartWars/.vscode/settings.json
 StartWars/classes/__pycache__
+<<<<<<< HEAD
 .godot/
+=======
+
+
+# Godot 4+ specific ignores
+tinyswords/.godot/
+
+# Godot-specific ignores
+tinyswords/.import/
+tinyswords/export.cfg
+tinyswords/export_presets.cfg
+
+# Imported translations (automatically generated from CSV files)
+tinyswords/*.translation
+
+# Mono-specific ignores
+tinyswords/.mono/
+tinyswords/data_*/
+tinyswords/mono_crash.*.json
+>>>>>>> c156b2d7c4e07f89292033c3a26748c4630702d2
