@@ -57,9 +57,7 @@ func update_health(value:int)->void:
 	if health < 0:
 		pode_morrer = true
 		animacao.play("Morte")
-		ataque.disabled =true
-	
-	
+		ataque.disabled =true	
+
 func _on_AreaAtaque_body(body)->void:
 	body.update_health(damage)
-	
