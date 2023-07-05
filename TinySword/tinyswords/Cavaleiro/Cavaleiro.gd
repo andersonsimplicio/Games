@@ -5,12 +5,13 @@ onready var textura:Sprite = get_node("Textura")
 onready var aux_animation:AnimationPlayer = get_node("AnimationAux") 
 
 export var move_speed:float = 256.0
-export var damage:int = 3
+export var damage:int = 1
 export var health:int = 10
 var pode_morrer =false
 
 var velocity:Vector2
 var pode_atacar:bool = true
+
 func  get_direction()-> Vector2:
 	return Vector2(
 		Input.get_axis("mover_es","mover_dir"),
@@ -23,6 +24,7 @@ func _physics_process(delta:float)-> void:
 	move()
 	animate()
 	handlerAtaque()
+	
 func move()->void:
 	var direction:Vector2 = get_direction()
 	velocity = direction * move_speed
