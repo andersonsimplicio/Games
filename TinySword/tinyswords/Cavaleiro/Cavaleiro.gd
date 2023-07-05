@@ -2,6 +2,8 @@ extends KinematicBody2D
 onready var ataque:CollisionShape2D = get_node("AreaAtaque/colisaoAtaque")
 onready var animacao:AnimationPlayer= get_node("AnimationPlayer")
 onready var textura:Sprite = get_node("Textura")	
+onready var aux_animation:AnimationPlayer = get_node("AnimationAux") 
+
 export var move_speed:float = 256.0
 export var damage:int = 3
 export var health:int = 10
@@ -29,10 +31,10 @@ func move()->void:
 func animate()->void:	
 	if velocity.x > 0:
 		textura.flip_h = false
-		ataque.position.x = 28#58
+		ataque.position.x = 58#28
 	if velocity.x < 0:
 		textura.flip_h = true
-		ataque.position.x = -28#58
+		ataque.position.x = -58#28
 	if velocity!=Vector2.ZERO:
 		animacao.play("Correndo")
 		return 
@@ -57,7 +59,10 @@ func update_health(value:int)->void:
 	if health < 0:
 		pode_morrer = true
 		animacao.play("Morte")
-		ataque.disabled =true	
-
+		ataque.disabled =true
+		return 
+	aux_animation.play("hit")
+	
+	
 func _on_AreaAtaque_body(body)->void:
 	body.update_health(damage)
