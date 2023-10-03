@@ -43,6 +43,15 @@ class Node:
         self.state = state
         self.parent = parent
         self.custo_acumulado = custo_acumulado
+        
+def solucao(no):
+    caminho = []
+    while no:
+        caminho.append(no.state)
+        no = no.parent
+    return list(reversed(caminho))
+
+
 
 def busca_em_arvore(problema):
     borda = [Node(problema.estado_inicial,0)]  # Inicializa a borda com o estado inicial
@@ -64,12 +73,7 @@ def busca_em_arvore(problema):
 
 
 
-def solucao(no):
-    caminho = []
-    while no:
-        caminho.append(no.state)
-        no = no.parent
-    return list(reversed(caminho))
+
 
 # Exemplo de uso:
 estado_inicial = "Arad"
