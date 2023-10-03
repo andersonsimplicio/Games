@@ -1,5 +1,7 @@
 extends KinematicBody2D
 
+const ENEMY_ATAQUE_AREA:PackedScene = preload('res://tinyswords/Inimigo/InimigoAtaqueArea.tscn')
+const OFFSET:Vector2 = Vector2(-0.5,31)
 onready var animacao:AnimationPlayer = get_node("Animation")
 onready var textura:Sprite = get_node("Textura")	
 onready var aux_animation:AnimationPlayer = get_node("Aux_Animation")
@@ -7,7 +9,6 @@ onready var aux_animation:AnimationPlayer = get_node("Aux_Animation")
 
 var velocity:Vector2
 export var speed:float = 190
-export var damage:int = 1
 export var health:int = 3
 export var limite_dist:float =60.0 
 var pode_morrer =false
@@ -16,8 +17,10 @@ var player:KinematicBody2D = null
 
 
 
-func handler_ataque()->void:
-	pass
+func spaw_ataque()->void:
+	var ataque_area = ENEMY_ATAQUE_AREA.instance()
+	ataque_area.position = OFFSET
+	add_child(ataque_area)
 
 
 func animate()->void:
@@ -35,7 +38,7 @@ func animate()->void:
 func _physics_process(delta:float)-> void:
 	if pode_morrer == true:
 		return
-	if player == null:
+	if player == null or player.pode_morrer == true:
 		velocity = Vector2.ZERO
 		animate()
 		return
@@ -66,3 +69,8 @@ func _on_DetectionArea_body_entered(body):
 	
 func _on_DetectionArea_body_exited(body):
 	player = null
+
+
+func _on_Animation_animation_finished(anim_name:String)->void:
+	if anim_name == "Morreu":
+		queue_free()
