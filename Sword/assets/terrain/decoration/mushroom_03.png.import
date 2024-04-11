@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://broswfih1g1ao"
-path="res://.godot/imported/mushroom_03.png-9a9f5bea6c03d4765ab95c1eab8421c7.ctex"
+path="res://.godot/imported/mushroom_03.png-db25cb5d089db7f573da50e6ff26b777.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://tiny_sword_demo/assets/terrain/decoration/mushroom_03.png"
-dest_files=["res://.godot/imported/mushroom_03.png-9a9f5bea6c03d4765ab95c1eab8421c7.ctex"]
+source_file="res://assets/terrain/decoration/mushroom_03.png"
+dest_files=["res://.godot/imported/mushroom_03.png-db25cb5d089db7f573da50e6ff26b777.ctex"]
 
 [params]
 

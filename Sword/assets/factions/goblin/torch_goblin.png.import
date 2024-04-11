@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dygyr15na4qrn"
-path="res://.godot/imported/torch_goblin.png-da8a8f55db94010245599885873d3004.ctex"
+path="res://.godot/imported/torch_goblin.png-726725a24990271f76ef45c473ff3e9f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://tiny_sword_demo/assets/factions/goblin/torch_goblin.png"
-dest_files=["res://.godot/imported/torch_goblin.png-da8a8f55db94010245599885873d3004.ctex"]
+source_file="res://assets/factions/goblin/torch_goblin.png"
+dest_files=["res://.godot/imported/torch_goblin.png-726725a24990271f76ef45c473ff3e9f.ctex"]
 
 [params]
 

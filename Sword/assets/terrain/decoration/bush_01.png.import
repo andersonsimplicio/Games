@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://x3y0dot74e22"
-path="res://.godot/imported/bush_01.png-1e5ac7e04c90a2d50d8a98ae170843b4.ctex"
+path="res://.godot/imported/bush_01.png-40675dbaea389caffd5a0d13de3ac1ce.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://tiny_sword_demo/assets/terrain/decoration/bush_01.png"
-dest_files=["res://.godot/imported/bush_01.png-1e5ac7e04c90a2d50d8a98ae170843b4.ctex"]
+source_file="res://assets/terrain/decoration/bush_01.png"
+dest_files=["res://.godot/imported/bush_01.png-40675dbaea389caffd5a0d13de3ac1ce.ctex"]
 
 [params]
 

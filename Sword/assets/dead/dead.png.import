@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cf3ipgfl4kuyc"
-path="res://.godot/imported/dead.png-2c92f7acfb88a67ac54d4f95de56637b.ctex"
+path="res://.godot/imported/dead.png-c35e9d55e028e10763b93f3b52ac3981.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://tiny_sword_demo/assets/dead/dead.png"
-dest_files=["res://.godot/imported/dead.png-2c92f7acfb88a67ac54d4f95de56637b.ctex"]
+source_file="res://assets/dead/dead.png"
+dest_files=["res://.godot/imported/dead.png-c35e9d55e028e10763b93f3b52ac3981.ctex"]
 
 [params]
 
