@@ -11,9 +11,15 @@ config_version=5
 [application]
 
 config/name="Atena"
-run/main_scene="res://atena.tscn"
+run/main_scene="res://Level1/area.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
 config/icon="res://icon.svg"
+
+[display]
+
+window/size/viewport_width=800
+window/size/viewport_height=600
+window/stretch/scale=1.6
 
 [input]
 
@@ -25,5 +31,6 @@ Ataque={
 
 [rendering]
 
+textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
